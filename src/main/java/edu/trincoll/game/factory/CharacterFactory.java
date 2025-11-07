@@ -1,22 +1,4 @@
-/**
- * AI Collaboration Summary:
- * Tool: ChatGPT (GPT-5 Thinking)
- *
- * What AI Helped With:
- * 1. Completed Strategy, Factory, Builder, Command, and Template Method TODOs.
- * 2. Ensured integer arithmetic rules and Java 21 switch expressions.
- *
- * What I Had to Fix:
- * 1. Verified 75% cap logic in HeavyArmorDefenseStrategy and truncation behavior.
- * 2. Normalized undo tracking to store actual deltas.
- *
- * What I Learned:
- * - How patterns interoperate in a cohesive architecture.
- * - Why encapsulating behaviors/flows improves maintainability and testability.
- *
- * Team: [List team member names and contributions]
- */
-package edu.trincoll.game.factory;
+
 
 import edu.trincoll.game.model.Character;
 import edu.trincoll.game.model.CharacterStats;
@@ -36,29 +18,6 @@ import edu.trincoll.game.strategy.HeavyArmorDefenseStrategy;
  */
 public class CharacterFactory {
 
-    /**
-     * TODO 2a: Implement createWarrior()
-     *
-     * Create a Warrior character with:
-     * - Type: WARRIOR
-     * - Stats: 150 max health, 40 attack power, 30 defense, 0 max mana
-     * - Attack: MeleeAttackStrategy
-     * - Defense: HeavyArmorDefenseStrategy
-     *
-     * Use Character.builder() to construct the character.
-     *
-     * @param name The warrior's name
-     * @return A fully configured Warrior character
-     */
-    public static Character createWarrior(String name) {
-        return Character.builder()
-            .name(name)
-            .type(CharacterType.WARRIOR)
-            .stats(CharacterStats.create(150, 40, 30, 0))
-            .attackStrategy(new MeleeAttackStrategy())
-            .defenseStrategy(new HeavyArmorDefenseStrategy())
-            .build();
-    }
 
     /**
      * TODO 2b: Implement createMage()
@@ -126,28 +85,4 @@ public class CharacterFactory {
             .build();
     }
 
-    /**
-     * TODO 2e: Implement createCharacter()
-     *
-     * Factory method that creates a character of the specified type.
-     * This demonstrates the Factory Method pattern - one method that
-     * decides which concrete creation method to call.
-     *
-     * Use a switch expression (Java 21 feature!) to delegate to the
-     * appropriate creation method based on the type.
-     *
-     * @param name The character's name
-     * @param type The type of character to create
-     * @return A character of the specified type
-     * @throws IllegalArgumentException if type is null
-     */
-    public static Character createCharacter(String name, CharacterType type) {
-        if (type == null) throw new IllegalArgumentException("type cannot be null");
-        return switch (type) {
-            case WARRIOR -> createWarrior(name);
-            case MAGE -> createMage(name);
-            case ARCHER -> createArcher(name);
-            case ROGUE -> createRogue(name);
-        };
-    }
 }
