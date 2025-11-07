@@ -28,4 +28,9 @@ public class StandardBattleSequence extends BattleSequence {
      * 1. Calculate damage: attacker.attack(defender)
      * 2. Apply damage: defender.takeDamage(calculatedDamage)
      */
-
+    @Override
+    protected void performAttack() {
+        int damage = attacker.attack(defender);
+        defender.takeDamage(damage);
+    }
+}
