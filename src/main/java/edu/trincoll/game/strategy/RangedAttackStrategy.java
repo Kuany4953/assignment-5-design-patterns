@@ -45,4 +45,14 @@ import edu.trincoll.game.model.Character;
  *   Critical bonus: 40 * 1.5 = 60
  *   Return: 60
  */
-
+public class RangedAttackStrategy implements AttackStrategy {
+    @Override
+    public int calculateDamage(Character attacker, Character target) {
+        int base = (int) (attacker.getStats().attackPower() * 0.8);
+        double ratio = (double) target.getStats().health() / target.getStats().maxHealth();
+        if (ratio < 0.30) {
+            base = (int) (base * 1.5);
+        }
+        return base;
+    }
+}
