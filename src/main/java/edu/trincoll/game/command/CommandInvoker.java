@@ -56,7 +56,11 @@ public class CommandInvoker {
      * 2. Pop the last command from history
      * 3. Call undo() on that command
      */
-   
+    public void undoLastCommand() {
+        if (commandHistory.isEmpty()) return;
+        GameCommand command = commandHistory.pop();
+        command.undo();
+    }
 
     /**
      * Get the command history (for testing and logging).
