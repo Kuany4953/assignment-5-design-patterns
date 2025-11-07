@@ -46,7 +46,16 @@ public class AttackCommand implements GameCommand {
         this.attacker = attacker;
         this.target = target;
     }
+    
+ @Override
+    public void execute() {
+        damageDealt = attacker.attack(target);
+        target.takeDamage(damageDealt);
+    }
 
+    @Override
+    public void undo() {
+        target.heal(damageDealt);
    
     }
 
