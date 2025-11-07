@@ -1,3 +1,21 @@
+/**
+ * AI Collaboration Summary:
+ * Tool: ChatGPT (GPT-5 Thinking)
+ *
+ * What AI Helped With:
+ * 1. Completed Strategy, Factory, Builder, Command, and Template Method TODOs.
+ * 2. Ensured integer arithmetic rules and Java 21 switch expressions.
+ *
+ * What I Had to Fix:
+ * 1. Verified 75% cap logic in HeavyArmorDefenseStrategy and truncation behavior.
+ * 2. Normalized undo tracking to store actual deltas.
+ *
+ * What I Learned:
+ * - How patterns interoperate in a cohesive architecture.
+ * - Why encapsulating behaviors/flows improves maintainability and testability.
+ *
+ * Team: [List team member names and contributions]
+ */
 package edu.trincoll.game.command;
 
 import java.util.ArrayList;
@@ -26,8 +44,8 @@ public class CommandInvoker {
      * 2. Add the command to history: commandHistory.push(command)
      */
     public void executeCommand(GameCommand command) {
-        // TODO 4c: Implement command execution
-        throw new UnsupportedOperationException("TODO 4c: Implement executeCommand()");
+        command.execute();
+        commandHistory.push(command);
     }
 
     /**
@@ -39,8 +57,9 @@ public class CommandInvoker {
      * 3. Call undo() on that command
      */
     public void undoLastCommand() {
-        // TODO 4c: Implement undo
-        throw new UnsupportedOperationException("TODO 4c: Implement undoLastCommand()");
+        if (commandHistory.isEmpty()) return;
+        GameCommand command = commandHistory.pop();
+        command.undo();
     }
 
     /**

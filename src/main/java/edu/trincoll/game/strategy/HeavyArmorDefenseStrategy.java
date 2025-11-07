@@ -1,3 +1,21 @@
+/**
+ * AI Collaboration Summary:
+ * Tool: ChatGPT (GPT-5 Thinking)
+ *
+ * What AI Helped With:
+ * 1. Completed Strategy, Factory, Builder, Command, and Template Method TODOs.
+ * 2. Ensured integer arithmetic rules and Java 21 switch expressions.
+ *
+ * What I Had to Fix:
+ * 1. Verified 75% cap logic in HeavyArmorDefenseStrategy and truncation behavior.
+ * 2. Normalized undo tracking to store actual deltas.
+ *
+ * What I Learned:
+ * - How patterns interoperate in a cohesive architecture.
+ * - Why encapsulating behaviors/flows improves maintainability and testability.
+ *
+ * Team: [List team member names and contributions]
+ */
 package edu.trincoll.game.strategy;
 
 import edu.trincoll.game.model.Character;
@@ -27,7 +45,9 @@ import edu.trincoll.game.model.Character;
 public class HeavyArmorDefenseStrategy implements DefenseStrategy {
     @Override
     public int calculateDamageReduction(Character defender, int incomingDamage) {
-        // TODO 1e: Implement heavy armor defense with cap
-        throw new UnsupportedOperationException("TODO 1e: Implement heavy armor defense calculation");
+        int reduction = defender.getStats().defense();
+        int actual = incomingDamage - reduction;
+        int minAllowed = (int) (incomingDamage * 0.25); // cap: at least 25% gets through
+        return Math.max(minAllowed, actual);
     }
 }
