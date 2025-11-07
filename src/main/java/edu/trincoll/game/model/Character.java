@@ -191,7 +191,15 @@ public class Character {
          * This demonstrates the Builder pattern's ability to construct complex objects
          * while ensuring all required fields are provided before construction.
          */
-    
+        public Character build() {
+            if (name == null) throw new IllegalStateException("name is required");
+            if (type == null) throw new IllegalStateException("type is required");
+            if (stats == null) throw new IllegalStateException("stats is required");
+            if (attackStrategy == null) throw new IllegalStateException("attackStrategy is required");
+            if (defenseStrategy == null) throw new IllegalStateException("defenseStrategy is required");
+            return new Character(name, type, stats, attackStrategy, defenseStrategy);
+        }
+    }
 
     /**
      * Static factory method to create a Builder.
