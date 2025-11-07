@@ -36,9 +36,4 @@ import edu.trincoll.game.model.Character;
  *   With bonus: 50 * 1.2 = 60
  *   Return: 60
  */
-public class MeleeAttackStrategy implements AttackStrategy {
-    @Override
-    public int calculateDamage(Character attacker, Character target) {
-        return (int) (attacker.getStats().attackPower() * 1.2);
-    }
-}
+
