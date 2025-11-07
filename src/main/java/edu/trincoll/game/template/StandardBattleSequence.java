@@ -1,20 +1,7 @@
 /**
  * AI Collaboration Summary:
  * Tool: ChatGPT (GPT-5 Thinking)
- *
- * What AI Helped With:
- * 1. Completed Strategy, Factory, Builder, Command, and Template Method TODOs.
- * 2. Ensured integer arithmetic rules and Java 21 switch expressions.
- *
- * What I Had to Fix:
- * 1. Verified 75% cap logic in HeavyArmorDefenseStrategy and truncation behavior.
- * 2. Normalized undo tracking to store actual deltas.
- *
- * What I Learned:
- * - How patterns interoperate in a cohesive architecture.
- * - Why encapsulating behaviors/flows improves maintainability and testability.
- *
- * Team: [List team member names and contributions]
+
  */
 package edu.trincoll.game.template;
 
@@ -41,9 +28,4 @@ public class StandardBattleSequence extends BattleSequence {
      * 1. Calculate damage: attacker.attack(defender)
      * 2. Apply damage: defender.takeDamage(calculatedDamage)
      */
-    @Override
-    protected void performAttack() {
-        int damage = attacker.attack(defender);
-        defender.takeDamage(damage);
-    }
-}
+
