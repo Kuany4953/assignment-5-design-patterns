@@ -48,7 +48,18 @@ public class HealCommand implements GameCommand {
         this.amount = amount;
     }
 
+    @Override
+    public void execute() {
+        int before = target.getStats().health();
+        target.heal(amount);
+        int after = target.getStats().health();
+        actualHealingDone = after - before;
+    }
 
+    @Override
+    public void undo() {
+        target.setHealth(target.getStats().health() - actualHealingDone);
+    }
 
     @Override
     public String getDescription() {
