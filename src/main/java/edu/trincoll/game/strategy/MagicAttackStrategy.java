@@ -39,4 +39,13 @@ import edu.trincoll.game.model.Character;
  *   Total: 65
  *   After attack: mana reduced by 10
  */
-
+public class MagicAttackStrategy implements AttackStrategy {
+    @Override
+    public int calculateDamage(Character attacker, Character target) {
+        int base = attacker.getStats().attackPower();
+        int manaBonus = attacker.getStats().mana() / 10;
+        int total = base + manaBonus;
+        attacker.useMana(10);
+        return total;
+    }
+}
